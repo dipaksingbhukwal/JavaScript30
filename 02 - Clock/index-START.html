@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS + CSS Clock</title>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+    <div>
+      <label id="lbltipAddedComment" class="Title">test</label>
+      <br />
+    </div>
+
+    <style>
+      html {
+        background: #4e4e4e url(http://unsplash.it/1500/1000?image=881&blur=50);
+        background-size: cover;
+        font-family: "helvetica neue";
+        text-align: center;
+        font-size: 10px;
+      }
+
+      body {
+        margin: 0;
+        font-size: 12rem;
+
+        flex: 1;
+        min-height: 100vh;
+        /* align-items: center; */
+        text-align: center;
+      }
+
+      .clock {
+        width: 40rem;
+        height: 40rem;
+        border: 20px solid white;
+        border-radius: 5%;
+        margin: 50px auto;
+        background: #000000
+          url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Analogue_clock_face.svg/1024px-Analogue_clock_face.svg.png)
+          center;
+        background-size: cover;
+        position: relative;
+        padding: 2rem;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+          inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(
+          -3px
+        ); /* account for the height of the clock hands */
+      }
+
+      .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        /* transition: all 0.05s; */
+        transition-timing-function: cubic-bezier(0.1, 2.5, 0.5, 1);
+      }
+
+      .hour-hand {
+        height: 10px;
+        background: rgb(226, 62, 20);
+      }
+
+      .min-hand {
+        height: 7px;
+        background: rgb(118, 148, 10);
+      }
+
+      .Title {
+        margin: 0 0 var(--gutterXx) 0;
+        padding: 0;
+        color: #fff;
+        font-size: var(--fontSizeXx);
+        font-weight: 400;
+        line-height: var(--lineHeightSm);
+        text-align: center;
+        text-shadow: -0.1rem 0.1rem 0.2rem var(--colorPrimary800);
+      }
+    </style>
+
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const minuteHand = document.querySelector(".min-hand");
+      const hourHand = document.querySelector(".hour-hand");
+      function setDate() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const secondsDegree = (seconds / 60) * 360 + 90;
+        secondHand.style.transform = `rotate(${secondsDegree}deg)`;
+
+        const minutes = now.getMinutes();
+        const minutesDegree = (minutes / 60) * 360 + 90;
+        minuteHand.style.transform = `rotate(${minutesDegree}deg)`;
+
+        const hours = now.getHours();
+        const hoursDegree = (hours / 12) * 360 + 90;
+        hourHand.style.transform = `rotate(${hoursDegree}deg)`;
+
+        document.getElementById("lbltipAddedComment").innerHTML =
+          hours + " : " + minutes + " : " + seconds;
+      }
+      setInterval(setDate, 1000);
+    </script>
+  </body>
+</html>
