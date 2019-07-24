@@ -1,0 +1,37 @@
+body {
+  text-align: center;
+  background-color: rgb(185, 240, 240);
+}
+html {
+  box-sizing: border-box;
+  font-family: "helvetica neue";
+  font-size: 20px;
+  font-weight: 200;
+}
+
+table {
+  margin: auto;
+  border: #000000;
+}
+
+#changer {
+  background: #a5e46b;
+  height: 100px;
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 1%;
+  width: 50%;
+  border: 3px solid rgb(2, 104, 2);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#draw {
+  width: 50%;
+  height: 400;
+  border: 1px solid #000000;
+  background: white;
+  border: 3px solid rgb(2, 104, 2);
+  border-radius: 15px;
+  padding: 10px;
+}
